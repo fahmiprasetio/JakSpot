@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="12dp"
+    android:background="@android:color/white"
+    android:elevation="2dp"
+    android:padding="8dp"
+    android:layout_marginTop="4dp">
+
+    <!-- Gambar kafe -->
+    <ImageView
+        android:id="@+id/imageTempat"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/sample_kafe" />
+
+    <!-- Nama tempat -->
+    <TextView
+        android:id="@+id/textNama"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Kafe Random Gatau namanya"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/imageTempat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <!-- Lokasi tempat -->
+    <TextView
+        android:id="@+id/textLokasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Gatau, Jakarta Pokoknya"
+        android:textSize="12sp"
+        android:textColor="#777777"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/textNama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
