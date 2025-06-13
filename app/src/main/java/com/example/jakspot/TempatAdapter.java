@@ -30,7 +30,19 @@ public class TempatAdapter extends RecyclerView.Adapter<TempatAdapter.TempatView
         holder.imageTempat.setImageResource(tempat.getGambar());
         holder.textNama.setText(tempat.getNama());
         holder.textLokasi.setText(tempat.getLokasi());
+
+
+        // ⬇⬇ Tambahkan ini untuk buka halaman detail saat card ditekan
+        holder.itemView.setOnClickListener(v -> {
+            android.content.Context context = v.getContext();
+            android.content.Intent intent = new android.content.Intent(context, DetailActivity.class);
+            intent.putExtra("nama", tempat.getNama());
+            intent.putExtra("lokasi", tempat.getLokasi());
+            intent.putExtra("gambar", tempat.getGambar());
+            context.startActivity(intent);
+        });
     }
+
 
     @Override
     public int getItemCount() {

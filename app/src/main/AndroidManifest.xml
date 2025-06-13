@@ -28,34 +28,31 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="YOUR_API_KEY" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:exported="true"
-            android:label="@string/title_activity_maps">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <!-- Jadikan SplashActivity sebagai launcher -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:windowSoftInputMode="adjustResize"/>
+
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity> <!-- Halaman utama/beranda -->
         <activity
             android:name=".MainActivity"
-            android:exported="true" /> <!-- Halaman kedua: Explore -->
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing"/> <!-- Halaman kedua: Explore -->
         <activity
             android:name=".ExploreActivity"
             android:exported="true" /> <!-- halamn profil -->
         <activity
             android:name=".ProfileActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DetailActivity"
             android:exported="true" />
     </application>
 

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">JakSpot</string>
-    <string name="title_activity_maps">MapsActivity</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_explore">Explore</string>
+
 </resources>
