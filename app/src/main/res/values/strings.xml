@@ -3,5 +3,9 @@
     <string name="nav_home">Home</string>
     <string name="nav_profile">Profile</string>
     <string name="nav_explore">Explore</string>
+    <string name="nama_tempat">Kafe Random Gatau namanya</string>
+    <string name="lokasi_tempat">Gatau, Jakarta Pokoknya</string>
+    <string name="tombol_favorit">Tombol Favorit</string>
+    <string name="img_tempat">Gambar tempat</string>
 
 </resources>

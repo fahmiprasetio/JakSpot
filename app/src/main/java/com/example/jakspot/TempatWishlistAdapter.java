@@ -1,3 +1,4 @@
+// === TempatWishlistAdapter.java ===
 package com.example.jakspot;
 
 import android.content.Context;
@@ -9,46 +10,43 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class TempatAdapter extends RecyclerView.Adapter<TempatAdapter.TempatViewHolder> {
+public class TempatWishlistAdapter extends RecyclerView.Adapter<TempatWishlistAdapter.TempatViewHolder> {
 
     private List<Tempat> tempatList;
     private Context context;
     private DbHelper dbHelper;
 
-    public TempatAdapter(Context context, List<Tempat> tempatList) {
+    public TempatWishlistAdapter(Context context, List<Tempat> tempatList) {
         this.tempatList = tempatList;
         this.context = context;
         this.dbHelper = new DbHelper(context);
     }
 
+    @NonNull
     @Override
-    public TempatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tempat, parent, false);
+    public TempatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tempat_wishlist, parent, false);
         return new TempatViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(TempatViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TempatViewHolder holder, int position) {
         Tempat tempat = tempatList.get(position);
         holder.imageTempat.setImageResource(tempat.getGambar());
         holder.textNama.setText(tempat.getNama());
         holder.textLokasi.setText(tempat.getLokasi());
 
-        boolean isFav = dbHelper.isFavorited(tempat.getNama());
-        holder.btnFavorite.setImageResource(isFav ? R.drawable.ic_favorite_filled : R.drawable.ic_favorite_border);
-
+        holder.btnFavorite.setImageResource(R.drawable.ic_favorite_filled);
         holder.btnFavorite.setOnClickListener(v -> {
-            if (dbHelper.isFavorited(tempat.getNama())) {
-                dbHelper.removeFavorite(tempat.getNama());
-                holder.btnFavorite.setImageResource(R.drawable.ic_favorite_border);
-            } else {
-                dbHelper.addFavorite(tempat);
-                holder.btnFavorite.setImageResource(R.drawable.ic_favorite_filled);
-            }
+            dbHelper.removeFavorite(tempat.getNama());
+            tempatList.remove(position);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, tempatList.size());
         });
 
         holder.itemView.setOnClickListener(v -> {
@@ -79,3 +77,15 @@ public class TempatAdapter extends RecyclerView.Adapter<TempatAdapter.TempatView
         }
     }
 }
+
+
+// === MODIFIKASI TempatAdapter.java ===
+// Tambahkan ini ke dalam onCreateViewHolder untuk mendeteksi layout berbeda
+// Gunakan ini jika Anda ingin satu adapter mendukung banyak layout:
+// Gantilah:
+// View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tempat, parent, false);
+// Dengan:
+// int layoutId = (context instanceof WishlistActivity)
+//     ? R.layout.item_tempat_wishlist
+//     : R.layout.item_tempat;
+// View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);

@@ -2,9 +2,11 @@ package com.example.jakspot;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -31,5 +33,12 @@ public class ProfileActivity extends AppCompatActivity {
         navProfile.setOnClickListener(v -> {
             // Sudah di halaman profile
         });
+
+        Button btnFavorit = findViewById(R.id.btn_favorit);
+        btnFavorit.setOnClickListener(v -> {
+            Intent intent = new Intent(ProfileActivity.this, WishlistActivity.class);
+            startActivity(intent);
+        });
+
     }
 }

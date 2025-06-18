@@ -1,7 +1,9 @@
+// === ExploreActivity.java ===
 package com.example.jakspot;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +22,6 @@ public class ExploreActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_explore);
 
         // === 1. BOTTOM NAV ===
@@ -46,16 +47,31 @@ public class ExploreActivity extends AppCompatActivity {
         gridRecyclerView = findViewById(R.id.gridRecyclerView);
         gridRecyclerView.setLayoutManager(new GridLayoutManager(this, 2)); // 2 kolom
 
-        // === 3. DATA DUMMY ===
-        listTempat = new ArrayList<>();
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 1", "Jakarta Selatan"));
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 2", "Jakarta Timur"));
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 3", "Jakarta Pusat"));
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 4", "Jakarta Utara"));
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 5", "Jakarta Barat"));
-        listTempat.add(new Tempat(R.drawable.sample_kafe, "Kafe Random 6", "Jakarta Kota"));
+        // === 3. DATA & ADAPTER ===
+        listTempat = TempatData.getAllTempat();
+        adapter = new TempatAdapter(ExploreActivity.this, listTempat);
+        gridRecyclerView.setAdapter(adapter);
 
-        adapter = new TempatAdapter(listTempat);
+        // === 4. FILTER BUTTONS ===
+        Button btnHotel = findViewById(R.id.btnHotel);
+        Button btnStasiun = findViewById(R.id.btnStasiun);
+        Button btnBandara = findViewById(R.id.btnBandara);
+        Button btnCafe = findViewById(R.id.btnCafe);
+
+        btnHotel.setOnClickListener(v -> filterKategori("Hotel"));
+        btnStasiun.setOnClickListener(v -> filterKategori("Stasiun"));
+        btnBandara.setOnClickListener(v -> filterKategori("Bandara"));
+        btnCafe.setOnClickListener(v -> filterKategori("Cafe"));
+    }
+
+    private void filterKategori(String kategori) {
+        List<Tempat> hasil = new ArrayList<>();
+        for (Tempat t : listTempat) {
+            if (t.getKategori().equalsIgnoreCase(kategori)) {
+                hasil.add(t);
+            }
+        }
+        adapter = new TempatAdapter(this, hasil);
         gridRecyclerView.setAdapter(adapter);
     }
 }

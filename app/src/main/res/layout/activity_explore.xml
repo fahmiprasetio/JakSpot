@@ -1,89 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F6F6">
+    android:background="@color/white"
+    tools:context=".ExploreActivity">
 
-    <!-- Konten Explore -->
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingBottom="70dp">
+        android:layout_above="@id/bottom_nav_include">
 
         <!-- Judul -->
         <TextView
-            android:id="@+id/textTitle"
-            android:layout_width="match_parent"
+            android:id="@+id/subTitleText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ayo mulai perjalanan\nkamu di Jakarta"
+            android:text="Ayo mulai perjalanan kamu di Jakarta :"
             android:textStyle="bold"
-            android:textSize="22sp"
-            android:textColor="#222222"
-            android:gravity="center"
-            android:layout_marginTop="32dp"
-            android:paddingHorizontal="24dp" />
+            android:textSize="18sp"
+            android:textColor="#000000"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp" />
 
-        <!-- Filter Scroll -->
+        <!-- Horizontal scrollable tombol kategori -->
         <HorizontalScrollView
-            android:id="@+id/filterScroll"
-            android:layout_width="match_parent"
+            android:id="@+id/scrollKategori"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:paddingHorizontal="8dp"
-            android:overScrollMode="never"
-            android:scrollbars="none">
+            android:fillViewport="true"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/subTitleText"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp">
 
             <LinearLayout
+                android:id="@+id/layoutKategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
                 <Button
+                    android:id="@+id/btnHotel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hotel"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_marginEnd="8dp" />
+                    android:text="Hotel" />
 
                 <Button
+                    android:id="@+id/btnStasiun"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Stasiun"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_marginEnd="8dp" />
+                    android:text="Stasiun" />
 
                 <Button
+                    android:id="@+id/btnBandara"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Bandara"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_marginEnd="8dp" />
+                    android:text="Bandara" />
 
                 <Button
+                    android:id="@+id/btnCafe"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cafe"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+                    android:text="Cafe" />
             </LinearLayout>
         </HorizontalScrollView>
 
         <!-- RecyclerView -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/gridRecyclerView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="8dp" />
-    </LinearLayout>
+            android:padding="8dp"
+            app:layout_constraintTop_toBottomOf="@id/scrollKategori"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    <!-- Bottom Nav -->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Navbar tetap -->
     <include
+        android:id="@+id/bottom_nav_include"
         layout="@layout/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_gravity="bottom" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true" />
 
-</FrameLayout>
+</RelativeLayout>

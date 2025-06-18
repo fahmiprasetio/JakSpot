@@ -53,6 +53,17 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:backgroundTint="@android:color/transparent"/>
+
+            <Button
+                android:id="@+id/btn_favorit"
+                android:text="Favorit Saya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@android:color/transparent"/>
+
         </LinearLayout>
     </ScrollView>
 

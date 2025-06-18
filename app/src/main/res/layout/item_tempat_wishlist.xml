@@ -2,25 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="200dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="12dp"
-    android:layout_marginTop="4dp"
+    android:layout_marginBottom="12dp"
+    android:layout_marginHorizontal="12dp"
     android:background="@android:color/white"
     android:elevation="2dp"
-    android:padding="8dp">
+    android:padding="12dp">
 
     <!-- Gambar tempat -->
     <ImageView
         android:id="@+id/imageTempat"
         android:layout_width="0dp"
-        android:layout_height="120dp"
+        android:layout_height="180dp"
         android:scaleType="centerCrop"
         android:src="@drawable/sample_kafe"
         android:contentDescription="@string/img_tempat"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Nama tempat -->
+    <TextView
+        android:id="@+id/textNama"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nama_tempat"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#000000"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/imageTempat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_favorite"/>
+
+    <!-- Lokasi tempat -->
+    <TextView
+        android:id="@+id/textLokasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/lokasi_tempat"
+        android:textSize="14sp"
+        android:textColor="#666666"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:layout_marginTop="4dp"
+        app:layout_constraintTop_toBottomOf="@id/textNama"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="8dp" />
 
     <!-- Tombol favorit -->
     <ImageButton
@@ -31,41 +63,6 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         app:tint="@android:color/holo_red_dark"
         android:contentDescription="@string/tombol_favorit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textNama"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="7dp"/>
-
-    <!-- Nama tempat -->
-    <TextView
-        android:id="@+id/textNama"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/nama_tempat"
-        android:textStyle="bold"
-        android:textSize="14sp"
-        android:textColor="#000000"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@id/imageTempat"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
-
-    <!-- Lokasi tempat -->
-    <TextView
-        android:id="@+id/textLokasi"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/lokasi_tempat"
-        android:textSize="12sp"
-        android:textColor="#666666"
-        android:ellipsize="end"
-        android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@id/textNama"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
