@@ -5,13 +5,23 @@ public class Tempat {
     private String nama;
     private String lokasi;
     private String kategori;
+    private double latitude;
+    private double longitude;
     private boolean isFavorite = false;
 
-    public Tempat(int gambar, String nama, String lokasi, String kategori) {
+    // Constructor with coordinates
+    public Tempat(int gambar, String nama, String lokasi, String kategori, double latitude, double longitude) {
         this.gambar = gambar;
         this.nama = nama;
         this.lokasi = lokasi;
         this.kategori = kategori;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    // Legacy constructor without coordinates
+    public Tempat(int gambar, String nama, String lokasi, String kategori) {
+        this(gambar, nama, lokasi, kategori, 0.0, 0.0);
     }
 
     public int getGambar() {
@@ -28,6 +38,14 @@ public class Tempat {
 
     public String getKategori() {
         return kategori;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
     }
 
     public boolean isFavorite() {

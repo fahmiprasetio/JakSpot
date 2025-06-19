@@ -53,6 +53,8 @@ public class TempatWishlistAdapter extends RecyclerView.Adapter<TempatWishlistAd
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra("nama", tempat.getNama());
             intent.putExtra("lokasi", tempat.getLokasi());
+            intent.putExtra("lat", tempat.getLatitude());
+            intent.putExtra("lng", tempat.getLongitude());
             intent.putExtra("gambar", tempat.getGambar());
             context.startActivity(intent);
         });

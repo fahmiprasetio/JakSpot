@@ -51,6 +51,13 @@
                 android:textSize="16sp"
                 android:textColor="#555555" />
 
+            <!-- Google Map -->
+            <FrameLayout
+                android:id="@+id/map_container"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp" />
+
             <!-- Deskripsi -->
             <TextView
                 android:id="@+id/deskripsi_kafe"
